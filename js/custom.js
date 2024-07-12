@@ -50,5 +50,48 @@
   
   })(window.jQuery);
 
+  document.addEventListener('DOMContentLoaded', function () {
+    var videoContainer = document.querySelector('.video-container');
+    var overlay = videoContainer.querySelector('.video-overlay');
+    var iframe = videoContainer.querySelector('.video-frame');
 
+    overlay.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        iframe.style.filter = 'none';
+
+        var player = new YT.Player(iframe, {
+            events: {
+                'onReady': function (event) {
+                    event.target.playVideo();
+                }
+            }
+        });
+    });
+});
+
+
+// FUNGSI LOGIN GOOGLE
+
+document.getElementById('login-icon').addEventListener('click', function() {
+  document.getElementById('login-popup').classList.add('active');
+});
+
+document.getElementById('popup-close').addEventListener('click', function() {
+  document.getElementById('login-popup').classList.remove('active');
+});
+
+// Close the pop-up when clicking outside of it
+document.addEventListener('click', function(event) {
+  const popup = document.getElementById('login-popup');
+  const icon = document.getElementById('login-icon');
+
+  if (!popup.contains(event.target) && event.target !== icon) {
+      popup.classList.remove('active');
+  }
+});
+
+function googleLogin() {
+  // Add your Google login functionality here
+  alert('Google login clicked!');
+}
 
