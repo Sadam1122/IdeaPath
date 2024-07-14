@@ -95,3 +95,78 @@ function googleLogin() {
   alert('Google login clicked!');
 }
 
+// Grafik Game
+document.addEventListener('DOMContentLoaded', function () {
+  var expCtx = document.getElementById('exp-chart').getContext('2d');
+  var levelCtx = document.getElementById('level-chart').getContext('2d');
+
+  var expChart = new Chart(expCtx, {
+      type: 'line',
+      data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+              label: 'EXP Gained',
+              data: [200, 400, 300, 500, 600, 700],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+              fill: true,
+              tension: 0.4
+          }]
+      },
+      options: {
+          responsive: true,
+          scales: {
+              x: {
+                  beginAtZero: true,
+                  title: {
+                      display: true,
+                      text: 'Month'
+                  }
+              },
+              y: {
+                  beginAtZero: true,
+                  title: {
+                      display: true,
+                      text: 'EXP'
+                  }
+              }
+          }
+      }
+  });
+
+  var levelChart = new Chart(levelCtx, {
+      type: 'bar',
+      data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+              label: 'Level Progress',
+              data: [1, 2, 3, 4, 5, 6],
+              backgroundColor: 'rgba(153, 102, 255, 0.2)',
+              borderColor: 'rgba(153, 102, 255, 1)',
+              borderWidth: 1,
+              fill: true,
+          }]
+      },
+      options: {
+          responsive: true,
+          scales: {
+              x: {
+                  beginAtZero: true,
+                  title: {
+                      display: true,
+                      text: 'Month'
+                  }
+              },
+              y: {
+                  beginAtZero: true,
+                  title: {
+                      display: true,
+                      text: 'Level'
+                  }
+              }
+          }
+      }
+  });
+});
+
